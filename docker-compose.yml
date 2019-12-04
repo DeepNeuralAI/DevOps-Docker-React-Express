@@ -1,0 +1,31 @@
+version: '3.6'
+services:
+  client:
+      restart: always
+      build:
+        context: ./client
+      ports:
+          - 3000:3000
+      volumes:
+          - ./client:/client
+          - /client/node_modules
+      links:
+          - server
+  server:
+      restart: always
+      build:
+        context: ./server
+      ports:
+          - 5000:5000
+      volumes:
+          - ./server:/server
+          - /server/node_modules
+      depends_on:
+          - mongodb
+  mongodb:
+    image: mongo
+    # restart: always
+    container_name: mongodb
+    ports:
+        - 27017:27017
+   

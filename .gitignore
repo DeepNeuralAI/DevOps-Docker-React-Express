@@ -1,2 +1,4 @@
 ./client/node-modules
 ./server/node-modules
+server/node_modules
+client/node_modules
